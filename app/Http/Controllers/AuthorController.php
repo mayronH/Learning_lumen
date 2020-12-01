@@ -33,8 +33,4 @@ class AuthorController extends Controller
 
         return response('Deletado com sucesso', 200);
     }
-
-    public function createBooks(Request $request){
-
-    }
 }

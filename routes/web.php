@@ -23,4 +23,9 @@ $router->post('/authors', 'AuthorController@createAuthor');
 $router->put('/authors/{author_id}', 'AuthorController@updateAuthor');
 $router->delete('/authors/{author_id}', 'AuthorController@deleteAuthor');
 
-$router->post('/authors/{author_id}/books', 'AuthorController@createBook');
+$router->get('/books', 'BookController@showAllBooks');
+$router->get('/authors/{author_id}/books', 'BookController@showAllBooksFromAuthor');
+$router->get('/authors/{author_id}/books/{book_id}', 'BookController@showOneBook');
+$router->post('/authors/{author_id}/books', 'BookController@createBook');
+$router->put('/authors/{author_id}/books/{book_id}', 'BookController@updateBook');
+$router->delete('/authors/{author_id}/books/{book_id}', 'BookController@deleteBook');
