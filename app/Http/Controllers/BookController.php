@@ -88,4 +88,40 @@ class BookController extends Controller
 		return response()->json('Livro deletado com sucesso', 200);
 	}
 
+	public function addGenre($book_id, $genre_id){
+		try{
+			$book = Book::findOrFail($book_id);
+		}catch (ModelNotFoundException $e){
+			return response('Livro não encontrado', 404);	
+		}
+
+		$book->genres()->attach($genre_id);
+
+		return response()->json('Genero adicionado com sucesso', 200);
+	}
+
+	public function removeGenre($book_id, $genre_id){
+		try{
+			$book = Book::findOrFail($book_id);
+		}catch (ModelNotFoundException $e){
+			return response('Livro não encontrado', 404);	
+		}
+
+		$book->genres()->detach($genre_id);
+
+		return response()->json('Genero removido com sucesso', 200);
+	}
+
+	public function showAllGenresFromBook($book_id){
+		try{
+			$book = Book::findOrFail($book_id);
+		}catch (ModelNotFoundException $e){
+			return response('Livro não encontrado', 404);	
+		}
+
+		$genres = $book->genres;
+
+		return response()->json($genres, 200);
+	}
+
 }

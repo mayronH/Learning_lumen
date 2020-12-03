@@ -13,7 +13,12 @@ class AuthorController extends Controller
     }
 
     public function showOneAuthor($author_id){
-        return response()->json(Author::find($author_id));
+        try{
+			$author = Author::findOrFail($author_id);
+		}catch (ModelNotFoundException $e){
+			return response('Autor não encontrado', 404);	
+		}
+        return response()->json($author, 200);
     }
 
     public function createAuthor(Request $request){

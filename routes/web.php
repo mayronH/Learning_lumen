@@ -29,3 +29,15 @@ $router->get('/authors/{author_id}/books/{book_id}', 'BookController@showOneBook
 $router->post('/authors/{author_id}/books', 'BookController@createBook');
 $router->put('/authors/{author_id}/books/{book_id}', 'BookController@updateBook');
 $router->delete('/authors/{author_id}/books/{book_id}', 'BookController@deleteBook');
+
+$router->get('/books/{book_id}/genres', 'BookController@showAllGenresFromBook');
+$router->get('/genres/{genre_id}/books', 'GenreController@showAllBooksFromGenre');
+
+$router->put('/books/{book_id}/genres/{genre_id}', 'BookController@addGenre');
+$router->delete('/books/{book_id}/genres/{genre_id}', 'BookController@removeGenre');
+
+$router->get('/genres', 'GenreController@showAllGenres');
+$router->get('/genres/{genre_id}', 'GenreController@showOneGenre');
+$router->post('/genres', 'GenreController@createGenre');
+$router->put('/genres/{genre_id}', 'GenreController@updateGenre');
+$router->delete('/genres/{genre_id}', 'GenreController@deleteGenre');
